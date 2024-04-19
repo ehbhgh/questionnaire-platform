@@ -11,6 +11,12 @@ module.exports = {
     ],
     "overrides": [
     ],
+    "settings": {
+        "react": {
+          "version": "detect"
+        }
+      },
+    
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
