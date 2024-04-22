@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "commitlint.config.js"  ]
 }
