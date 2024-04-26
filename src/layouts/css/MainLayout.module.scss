@@ -1,0 +1,23 @@
+.header {
+    background-color: #c5e9fc !important;
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+}
+
+.main {
+   height: calc(100vh - 127px);
+   overflow: auto;
+}
+
+.footer {
+    text-align: center;
+    border-top: 1px solid #e8e8e8;
+    background-color: #f7f7f7;
+
+}
