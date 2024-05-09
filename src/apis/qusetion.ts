@@ -1,0 +1,18 @@
+import request from '@/services/request'
+import type { ResDataInterface } from '@/types/request'
+
+//获取单个问卷信息
+export const getQuestionService = async (id: string): Promise<ResDataInterface> => {
+  const url = `/api/question/${id}`
+  const data = (await request.get(url)) as ResDataInterface
+  return data
+}
+
+//创建问卷
+export const createQuestionService = async (): Promise<ResDataInterface> => {
+  const url = `/api/question`
+  const data = (await request.post(url)) as ResDataInterface
+  return data
+}
+
+//获取查询问卷列表

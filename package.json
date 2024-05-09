@@ -19,6 +19,7 @@
     "ahooks": "^3.7.11",
     "animate.css": "^4.1.1",
     "antd": "^5.16.2",
+    "axios": "^1.6.8",
     "babel-plugin-import": "^1.13.8",
     "craco-sass-resources-loader": "^1.1.0",
     "immer": "^10.0.4",

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lazy Loading Images with Intersection Observer</title>
+<style>
+  .image {
+    width: 400px;
+    height: 300px;
+    margin: 20px;
+    background-color: lightgray;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+</style>
+</head>
+<body>
+
+<div class="image" data-src="./img/index1.jpg"></div>
+<div class="image" data-src="./img/index2.jpg"></div>
+<div class="image" data-src="./img/index3.jpg"></div>
+<div class="image" data-src="./img/index4.jpg"></div>
+<div class="image" data-src="./img/index5.jpg"></div>
+
+<script>
+// 获取所有具有.data-src属性的元素
+const lazyImages = document.querySelectorAll('.image[data-src]');
+
+// 配置Intersection Observer
+const observerOptions = {
+  root: null, // 使用默认的根（即viewport）
+  rootMargin: '0px', // 视窗边界
+  threshold: 0.5 // 当目标元素50%可见时触发回调
+};
+
+// Intersection Observer回调函数
+const lazyLoad = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const lazyImage = entry.target;
+      const imageUrl = lazyImage.getAttribute('data-src');
+      lazyImage.style.backgroundImage = `url('${imageUrl}')`;
+      lazyImage.removeAttribute('data-src');
+      observer.unobserve(lazyImage);
+    }
+  });
+};
+
+// 创建Intersection Observer实例
+const imageObserver = new IntersectionObserver(lazyLoad, observerOptions);
+
+// 为每个懒加载图片注册观察者
+lazyImages.forEach(image => imageObserver.observe(image));
+</script>
+
+</body>
+</html>
