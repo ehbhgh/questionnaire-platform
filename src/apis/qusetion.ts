@@ -1,5 +1,6 @@
 import request from '@/services/request'
 import type { ResDataInterface } from '@/types/request'
+import type { SearchOptionInterface } from '@/types/list'
 
 //获取单个问卷信息
 export const getQuestionService = async (id: string): Promise<ResDataInterface> => {
@@ -16,3 +17,12 @@ export const createQuestionService = async (): Promise<ResDataInterface> => {
 }
 
 //获取查询问卷列表
+export const getQuestionListService = async (
+  opt: Partial<SearchOptionInterface>
+): Promise<ResDataInterface> => {
+  const url = `/api/question`
+  const data = (await request.get(url, {
+    params: opt,
+  })) as ResDataInterface
+  return data
+}

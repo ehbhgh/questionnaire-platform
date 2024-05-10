@@ -34,12 +34,15 @@ module.exports = [
   {
     url: '/api/question',
     method: 'get',
-    response() {
+    response(ctx) {
+      const {url=""}=ctx;
+      const {pageSize=10}=ctx.query
+      const isDeleted=url.indexOf("isDeleted=true")>=0
       return {
         code: 200,
         msg: '查询成功',
         data: {
-          list: getQuestionList(), //当前页
+          list: getQuestionList(pageSize,isDeleted), //当前页
           total: 100,
         },
       }
