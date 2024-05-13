@@ -8,6 +8,9 @@ import ListSearch from '@/components/ListSearch'
 import type { TableProps } from 'antd'
 import type { DataType } from '@/types/trash'
 import PageList from '@/components/PageList'
+import { useRequest } from 'ahooks'
+import { updateQuestionService, deleteQuestionService } from '@/apis/qusetion'
+
 const columns: TableProps<DataType>['columns'] = [
   {
     title: '标题',
@@ -36,7 +39,7 @@ const { confirm } = Modal
 const Trash: FC = () => {
   useTitle('问卷调查-回收站')
   const [selectIds, setSelectIds] = useState<string[]>([])
-  const { data, loading } = useLoadQuestionListData({ isDeleted: true })
+  const { data, loading, refresh } = useLoadQuestionListData({ isDeleted: true })
   const { list, total = 0 } = data
   const deleteQuestion = () => {
     confirm({
@@ -44,18 +47,52 @@ const Trash: FC = () => {
       content: '删除以后无法找回',
       icon: <ExclamationCircleFilled />,
       onOk: () => {
-        message.success('删除成功')
+        deleteQuestionRun()
       },
     })
   }
-  const restoreQuestion = () => {
-    console.log('ff')
+  const refreshList = (msg: string) => {
+    message.success(msg)
+    refresh()
+    setSelectIds([])
   }
+  //恢复
+  const { loading: restoreLoad, run: restoreQuestion } = useRequest(
+    async () => {
+      for await (const id of selectIds) {
+        await updateQuestionService(id, {
+          isDeleted: false,
+        })
+      }
+    },
+    {
+      manual: true,
+      onSuccess: () => {
+        refreshList('恢复成功')
+      },
+    }
+  )
+
+  //删除
+  const { loading: deleteLoad, run: deleteQuestionRun } = useRequest(
+    async () => await deleteQuestionService(selectIds),
+    {
+      manual: true,
+      onSuccess: () => {
+        refreshList('删除成功')
+      },
+    }
+  )
+
   const TableItem = (
     <>
       <div style={{ marginBottom: '16px' }}>
         <Space>
-          <Button type="primary" onClick={() => restoreQuestion} disabled={selectIds.length === 0}>
+          <Button
+            type="primary"
+            onClick={restoreQuestion}
+            disabled={selectIds.length === 0 || restoreLoad}
+          >
             恢复
           </Button>
           <Button danger onClick={deleteQuestion} disabled={selectIds.length === 0}>

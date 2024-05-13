@@ -10,6 +10,7 @@ const useLoadQuestionListData = (opt: ExtendOptionInterface = {}) => {
     data = {},
     loading,
     error,
+    refresh,
   } = useRequest(
     async () => {
       const keyword = searchParams.get(ListSearchConstant.LIST_SEARCH_PARAM_KEY) || ''
@@ -22,6 +23,6 @@ const useLoadQuestionListData = (opt: ExtendOptionInterface = {}) => {
       refreshDeps: [searchParams], //刷新依赖项
     }
   )
-  return { data, loading, error }
+  return { data, loading, error, refresh }
 }
 export default useLoadQuestionListData

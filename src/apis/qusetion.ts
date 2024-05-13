@@ -26,3 +26,29 @@ export const getQuestionListService = async (
   })) as ResDataInterface
   return data
 }
+
+//更新问卷列表
+export const updateQuestionService = async (
+  id: string,
+  data: {
+    [key: string]: any
+  }
+): Promise<ResDataInterface> => {
+  const url = `/api/question/${id}`
+  const res = (await request.patch(url, data)) as ResDataInterface
+  return res
+}
+
+//复制问卷
+export const duplicateQuestionService = async (id: string): Promise<ResDataInterface> => {
+  const url = `/api/question/duplicate/${id}`
+  const data = (await request.post(url)) as ResDataInterface
+  return data
+}
+
+//删除问卷
+export const deleteQuestionService = async (ids: string[]) => {
+  const url = `/api/question`
+  const data = (await request.delete(url, { data: ids })) as ResDataInterface
+  return data
+}

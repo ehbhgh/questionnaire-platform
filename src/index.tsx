@@ -8,8 +8,6 @@ import 'dayjs/locale/zh-cn'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <ConfigProvider locale={zh_CN}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </ConfigProvider>
 )

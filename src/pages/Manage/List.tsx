@@ -49,7 +49,12 @@ const List: FC = () => {
       const footerEle = footerRefs.current
       if (!containerEle || !footerEle) return
       // //底部元素露出到最上面的距离小于页面高度
+      console.log(containerEle?.scrollHeight)
+      console.log(containerEle?.scrollTop)
+      console.log(containerEle?.clientHeight)
+
       if (
+        //滚动条滚动的高度小于可视区域的高度+底部元素高度
         containerEle?.scrollHeight - containerEle?.scrollTop <=
         containerEle?.clientHeight + footerEle?.offsetHeight
       ) {

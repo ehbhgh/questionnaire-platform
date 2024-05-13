@@ -49,5 +49,42 @@ module.exports = [
     },
   },
 
+  //更新问卷
+  {
+    url: '/api/question/:id',
+    method: 'patch',
+    response(ctx) {
+      return {
+        code: 200,
+        msg: '更新成功',
+      }
+    },
+  },
+
+  //复制问卷
+  {
+    url: '/api/question/duplicate/:id',
+    method: 'post',
+    response() {
+      return {
+        code: 200,
+        msg: '复制成功',
+        data: {
+          id: Mock.Random.id(),
+        },
+      }
+    },
+  },
   
+  //删除问卷
+  {
+    url: '/api/question',
+    method: 'delete',
+    response() {
+      return {
+        code: 200,
+        msg: '删除成功',
+      }
+    },
+  }
 ]
