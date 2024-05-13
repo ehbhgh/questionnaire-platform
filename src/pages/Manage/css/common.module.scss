@@ -1,7 +1,6 @@
 .container {
     box-sizing: border-box;
-    height:100%;
-    
+
     .header {
         display: flex;
         align-items: center;
@@ -23,11 +22,16 @@
     .content {
         margin-bottom: 20px;
         box-sizing: border-box;
-        overflow: auto;
     }
 
     .footer {
         text-align: center;
+        height: 50px;
+    }
 
+    .listContent {
+        overflow: auto;
+        height: 80vh;
+        box-sizing: border-box;
     }
 }
