@@ -22,17 +22,17 @@
 
 ### 9.1登录页
 
-![image-20240514171129806](.\public\md\image-20240514171129806.png)
+![image-20240514171129806](.\md\image-20240514171129806.png)
 
 ### 9.2注册页
 
-![image-20240514171228017](.\public\md\\image-20240514171228017.png)
+![image-20240514171228017](.\md\\image-20240514171228017.png)
 
 ### 9.3首页
 
-![image-20240514171307076](.\public\md\image-20240514171307076.png)
+![image-20240514171307076](.\md\image-20240514171307076.png)
 
 ### 9.4列表页
 
-![recording](.\public\md\recording.gif)
+![recording](.\md\recording.gif)
 
