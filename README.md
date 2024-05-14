@@ -18,24 +18,21 @@
 ## 8.语法
 > typescript
 
-## 页面效果
+## 9.页面效果
 
-### 登录页
+### 9.1登录页
 
-![image-20240514171129806](C:\Users\23382\AppData\Roaming\Typora\typora-user-images\image-20240514171129806.png)
+![image-20240514171129806](.\public\md\image-20240514171129806.png)
 
-### 注册页
+### 9.2注册页
 
-![image-20240514171228017](C:\Users\23382\AppData\Roaming\Typora\typora-user-images\image-20240514171228017.png)
+![image-20240514171228017](.\public\md\\image-20240514171228017.png)
 
-### 首页
+### 9.3首页
 
-![image-20240514171307076](C:\Users\23382\AppData\Roaming\Typora\typora-user-images\image-20240514171307076.png)
+![image-20240514171307076](.\public\md\image-20240514171307076.png)
 
-### 列表页
+### 9.4列表页
 
-![recording](D:\software\qianduan\PixPin\PixPin\History\recording.gif)
+![recording](.\public\md\recording.gif)
 
-### 回收站
-
-![recording](D:\software\qianduan\PixPin\PixPin\History\recording.gif)
