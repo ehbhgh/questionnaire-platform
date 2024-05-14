@@ -1,27 +1,41 @@
 import React, { FC } from 'react'
-import { Button, Space, Form, Input, Typography } from 'antd'
-import { UserAddOutlined } from '@ant-design/icons'
+import { Button, Space, Form, Input } from 'antd'
 import type { FormProps } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { RouterPath } from '@/constant'
 import styles from './Regiest.module.scss'
-import { RegiestFieldInterface } from '@/types/regiest'
-const { Title } = Typography
-
-const onFinish: FormProps<RegiestFieldInterface>['onFinish'] = values => {
-  console.log('Success:', values)
-}
-
-const onFinishFailed: FormProps<RegiestFieldInterface>['onFinishFailed'] = errorInfo => {
-  console.log('Failed:', errorInfo)
-}
+import type { RegiestFieldInterface } from '@/types/regiest'
+import { registerService } from '@/apis/user'
+import { useRequest } from 'ahooks'
 
 const Register: FC = () => {
+  const nav = useNavigate()
+  const onFinish: FormProps<RegiestFieldInterface>['onFinish'] = values => {
+    run(values)
+  }
+
+  const onFinishFailed: FormProps<RegiestFieldInterface>['onFinishFailed'] = errorInfo => {
+    console.log('Failed:', errorInfo)
+  }
+
+  const { loading, run } = useRequest(
+    async values => {
+      const { password, nickname, username } = values
+      const res = await registerService(password, nickname, username)
+      return res
+    },
+    {
+      manual: true,
+      onSuccess: () => {
+        nav(RouterPath.LOGON_PATHNAME)
+      },
+    }
+  )
   const FormElement = (
     <Form
       name="FormElement"
-      labelCol={{ span: 6 }}
-      wrapperCol={{ span: 20 }}
+      labelCol={{ span: 4 }}
+      wrapperCol={{ span: 13 }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
@@ -45,11 +59,7 @@ const Register: FC = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item<RegiestFieldInterface>
-        label="昵称"
-        name="nickname"
-        rules={[{ required: true, message: '请输入昵称' }]}
-      >
+      <Form.Item<RegiestFieldInterface> label="昵称" name="nickname">
         <Input />
       </Form.Item>
       <Form.Item<RegiestFieldInterface>
@@ -80,27 +90,35 @@ const Register: FC = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 6, span: 20 }}>
+      <Form.Item wrapperCol={{ offset: 2, span: 20 }}>
         <Space>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" className={styles.btn} htmlType="submit" disabled={loading}>
             注册
           </Button>
-          <Link to={RouterPath.LOGON_PATHNAME}>已有账户，登录</Link>
         </Space>
       </Form.Item>
     </Form>
   )
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <Space>
-          <Title level={2}>
-            <UserAddOutlined />
-          </Title>
-          <Title level={2}>注册新用户</Title>
-        </Space>
+      <div className={styles.imgBg}>
+        <img src={require('@/assets/images/loginBg.png')} alt="" />
       </div>
-      <div className={styles.form_area}>{FormElement}</div>
+      <div className={styles.login}>
+        <div className={styles.header}>
+          <div className={styles.title}>
+            <img src={require('@/assets/images/logo.png')} alt="" className={styles.logo} />
+            问卷调查平台
+          </div>
+          <div className={styles.titleOl}>请注册后登录!</div>
+        </div>
+        <div className={styles.form_area}>
+          {FormElement}
+          <Link to={RouterPath.LOGON_PATHNAME} className={styles.register_user}>
+            已有账户，登录
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }

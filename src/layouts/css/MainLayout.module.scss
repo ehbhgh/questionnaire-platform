@@ -1,6 +1,7 @@
 .header {
-    background-color: #c5e9fc !important;
 
+
+    background: url("~@/assets/images/login.png");
     .left {
         float: left;
     }
@@ -10,11 +11,16 @@
     }
 }
 
-
+.mainBg {
+    background: url("~@/assets/images/login.png");
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+}
 
 .footer {
     text-align: center;
-    border-top: 1px solid #e8e8e8;
-    background-color: #f7f7f7;
+    color: #fff;
+    background: url("~@/assets/images/login.png");
 
 }

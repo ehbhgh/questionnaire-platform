@@ -1,14 +1,20 @@
 import axios from 'axios'
 import { message } from 'antd'
 import { statusCodeProcess } from './statusCode'
+import { LocalstorageKey } from '@/constant'
 import type { AxiosInstance, AxiosError, InternalAxiosRequestConfig, AxiosResponse } from 'axios'
 const instance: AxiosInstance = axios.create({
   timeout: 10 * 1000,
 })
-
+import LocalStorageManager from '@/utils/localStorageManager'
+const token = new LocalStorageManager(LocalstorageKey.LOGIN_TOKEN_KEY)
 //请求拦截器
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
+    const authToken = token.load()
+    if (authToken !== null) {
+      config.headers['Authorization'] = authToken as string
+    }
     return config
   },
   (error: AxiosError) => {

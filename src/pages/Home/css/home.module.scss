@@ -4,9 +4,14 @@
     justify-content: center;
     align-items: center;
     height: calc(100vh - 129px);
-background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    background: url("~@/assets/images/login.png");
+
     .container_item {
         text-align: center;
+
+        .title {
+            color: #fff !important;
+        }
     }
 
     .btn_area {
@@ -14,6 +19,7 @@ background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
             height: 60px;
             font-size: 24px;
 
+            
         }
     }
 }

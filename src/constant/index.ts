@@ -18,4 +18,5 @@ export enum RouterPath {
 export enum LocalstorageKey {
   LOGIN_USERNAME_KEY = 'USERNAME',
   LOGIN_PASSWORD_KEY = 'PASSWORD',
+  LOGIN_TOKEN_KEY = 'TOEKN',
 }
