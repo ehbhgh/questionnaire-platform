@@ -12,7 +12,7 @@ import Star from '@/pages/Manage/Star'
 import Trash from '@/pages/Manage/Trash'
 import Edit from '@/pages/Question/Edit'
 import Stat from '@/pages/Question/Stat'
-import Test from '@/pages/Test/SelectTest'
+// import Test from '@/pages/Test/ReduxItem/Counter'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,10 +29,6 @@ const router = createBrowserRouter([
       {
         path: 'regiest',
         element: <Register />,
-      },
-      {
-        path: 'test',
-        element: <Test />,
       },
       {
         path: 'manage',

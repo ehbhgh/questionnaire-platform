@@ -8,13 +8,19 @@ import { Dropdown, message, Space, Avatar } from 'antd'
 import { LocalstorageKey, RouterPath } from '@/constant'
 import LocalStorageManager from '@/utils/localStorageManager'
 import { useNavigate } from 'react-router-dom'
+import useGetUserInfo from '@/hooks/useGetUserInfo'
+import { useDispatch } from 'react-redux'
+import { logOutReducer } from '@/store/features/user'
 const UserInfo: FC = () => {
-  const { data } = useRequest(getUserInfoService)
   const token = new LocalStorageManager(LocalstorageKey.LOGIN_TOKEN_KEY)
-  const { nickname, url, userName } = data || {}
+  const { nickname, url, userName } = useGetUserInfo()
+  console.log(nickname, url, userName, 'ws')
+
+  const dispatch = useDispatch()
   const nav = useNavigate()
   const onClick: MenuProps['onClick'] = ({ key }) => {
     if (key === '1') {
+      dispatch(logOutReducer()) //清空redux的user数据
       message.success('退出成功')
       token.clear()
       nav(RouterPath.LOGON_PATHNAME)
