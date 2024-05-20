@@ -1,8 +1,6 @@
 .container {
-    display: flex;
+    @extend %flexCenter;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: calc(100vh - 129px);
     background: url("~@/assets/images/login.png");
 
@@ -10,7 +8,7 @@
         text-align: center;
 
         .title {
-            color: #fff !important;
+            color: $base-content-background !important;
         }
     }
 
@@ -18,8 +16,6 @@
         button {
             height: 60px;
             font-size: 24px;
-
-            
         }
     }
 }

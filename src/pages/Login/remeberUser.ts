@@ -1,4 +1,4 @@
-import { RouterPath, LocalstorageKey } from '@/constant'
+import { LocalstorageKey } from '@/constant'
 import LocalStorageManager from '@/utils/localStorageManager'
 const passwordKey = new LocalStorageManager(LocalstorageKey.LOGIN_PASSWORD_KEY)
 const userKey = new LocalStorageManager(LocalstorageKey.LOGIN_USERNAME_KEY)

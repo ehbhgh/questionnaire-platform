@@ -5,17 +5,15 @@
     transform: translate(-50%, -50%);
     width: 1162px;
     height: 663px;
-    background-color: #fff;
+    background-color: $base-content-background;
     border-radius: 30px;
     box-shadow: 0px 0px 5px 5px rgba(37, 114, 253, 0.8);
     display: flex;
     align-items: center;
 
     .imgBg {
+        @extend %flexCenter;
         flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
         img {
             width: 460px;
@@ -30,7 +28,8 @@
             .title {
                 text-align: left;
                 font-size: 30px;
-                font-family: "PingFangSC-Regular, sans-serif";
+                font-family: $pingfang2;
+
                 .logo {
                     width: 150px;
                     height: 100px;
@@ -64,8 +63,8 @@
                 margin: 0 auto;
                 border: 1px solid #1A72FE;
             }
-            .register_user{
 
+            .register_user {
                 color: #1A72FE;
                 position: absolute;
                 right: 120px;

@@ -8,11 +8,7 @@ import { createQuestionService } from '@/apis/qusetion'
 const ManageLayout: FC = () => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  const {
-    loading,
-    error,
-    run: createQuestion,
-  } = useRequest(createQuestionService, {
+  const { loading, run: createQuestion } = useRequest(createQuestionService, {
     manual: true,
     onSuccess: res => {
       navigate(`/question/edit/${res.id}`)

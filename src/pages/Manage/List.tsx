@@ -7,6 +7,7 @@ import { ListSearchConstant } from '@/constant'
 import QuestionCard from '@/components/QuestionCard'
 import ListSearch from '@/components/ListSearch'
 import styles from './css/common.module.scss'
+import type { ListResponseItemInterface } from '@/types/list'
 const { Title } = Typography
 
 const List: FC = () => {
@@ -117,7 +118,10 @@ const List: FC = () => {
       <Divider style={{ margin: '12px', background: 'transparent' }} />
       <div className={styles.listContent} ref={contentRefs}>
         <div className={styles.content}>
-          {list.length > 0 && list.map((item: any) => <QuestionCard key={item._id} {...item} />)}
+          {list.length > 0 &&
+            list.map((item: ListResponseItemInterface) => (
+              <QuestionCard key={item._id} {...item} />
+            ))}
         </div>
         <div className={styles.footer}>
           <div ref={footerRefs}>{LoadMoreContentElem()}</div>

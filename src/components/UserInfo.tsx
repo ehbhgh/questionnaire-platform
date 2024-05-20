@@ -1,8 +1,6 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { UserOutlined } from '@ant-design/icons'
-import { useRequest } from 'ahooks'
-import { getUserInfoService } from '@/apis/user'
 import type { MenuProps } from 'antd'
 import { Dropdown, message, Space, Avatar } from 'antd'
 import { LocalstorageKey, RouterPath } from '@/constant'
@@ -14,7 +12,6 @@ import { logOutReducer } from '@/store/features/user'
 const UserInfo: FC = () => {
   const token = new LocalStorageManager(LocalstorageKey.LOGIN_TOKEN_KEY)
   const { nickname, url, userName } = useGetUserInfo()
-  console.log(nickname, url, userName, 'ws')
 
   const dispatch = useDispatch()
   const nav = useNavigate()

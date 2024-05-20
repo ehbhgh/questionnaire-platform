@@ -10,11 +10,11 @@ module.exports = [
     response() {
       return {
         code: 200,
-        msg: '',
+        msg: '获取用户信息成功',
         data: {
           userName: Random.title(),
           nickname: Random.cname(),
-          url: Random.image('200x100')
+          url: Random.image('200x100'),
         },
       }
     },

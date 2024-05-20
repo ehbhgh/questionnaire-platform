@@ -24,6 +24,15 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'react/prop-types': 0,
-    "react/display-name": "off",
+    'react/display-name': 'off',
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        extendDefaults: true,
+        types: {
+          '{}': false,
+        },
+      },
+    ],
   },
 }

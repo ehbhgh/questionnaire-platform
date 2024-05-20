@@ -1,13 +1,13 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import useLoadQuestionListData from '@/hooks/useLoadQuestionListData'
 import { useTitle } from 'ahooks'
-import { Empty, Typography, Divider, Spin, Pagination } from 'antd'
+import { Empty, Typography, Divider, Spin } from 'antd'
 import QuestionCard from '@/components/QuestionCard'
 import PageList from '@/components/PageList'
 import ListSearch from '@/components/ListSearch'
 import styles from './css/common.module.scss'
 const { Title } = Typography
-
+import type { StarResponseItemInterface } from '@/types/star'
 const Star: FC = () => {
   useTitle('问卷调查-星标问卷')
   const { data, loading } = useLoadQuestionListData({ isStar: true })
@@ -32,7 +32,7 @@ const Star: FC = () => {
         {!loading && list.length === 0 && <Empty description="暂无数据" />}
         {!loading &&
           list.length > 0 &&
-          list.map((item: any) => <QuestionCard key={item._id} {...item} />)}
+          list.map((item: StarResponseItemInterface) => <QuestionCard key={item._id} {...item} />)}
       </div>
       <div className={styles.footer}>
         <PageList total={total} />

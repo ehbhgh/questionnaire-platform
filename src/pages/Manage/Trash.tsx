@@ -74,7 +74,7 @@ const Trash: FC = () => {
   )
 
   //删除
-  const { loading: deleteLoad, run: deleteQuestionRun } = useRequest(
+  const { run: deleteQuestionRun } = useRequest(
     async () => await deleteQuestionService(selectIds),
     {
       manual: true,

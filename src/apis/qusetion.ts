@@ -31,7 +31,7 @@ export const getQuestionListService = async (
 export const updateQuestionService = async (
   id: string,
   data: {
-    [key: string]: any
+    [key: string]: unknown
   }
 ): Promise<ResDataInterface> => {
   const url = `/api/question/${id}`
