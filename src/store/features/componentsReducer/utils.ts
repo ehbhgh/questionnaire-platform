@@ -1,4 +1,4 @@
-import type { ComponentInfoInterface } from '@/types/components'
+import type { ComponentStateType, ComponentInfoInterface } from '@/types/components'
 
 export const getNextSelectedId = (
   uuid: string | undefined,
@@ -24,4 +24,19 @@ export const getNextSelectedId = (
     }
   }
   return newSelectId
+}
+
+export const insertNewComponent = (
+  draft: ComponentStateType,
+  newComponent: ComponentInfoInterface
+) => {
+  const { componentList, selectledId } = draft
+  //知道当前selectId;
+  const targetIndex = componentList.findIndex(item => item.uuid === selectledId)
+  //如果当前selectId为空，则直接添加,未选中组件
+  if (targetIndex === -1) {
+    draft.componentList.push(newComponent)
+  } else {
+    draft.componentList.splice(targetIndex + 1, 0, newComponent)
+  }
 }

@@ -5,7 +5,7 @@ type StateType = {
 }
 const useGetComponentInfo = () => {
   const components = useSelector<StateType>(state => state.component)
-  const { componentList = [], selectledId = '' } = components as ComponentStateType
+  const { componentList = [], selectledId = '', copiedComponent } = components as ComponentStateType
   // 获取当前选中组件信息
   const selectedComponent = componentList.find(
     item => item.uuid === selectledId
@@ -14,6 +14,7 @@ const useGetComponentInfo = () => {
     componentList,
     selectledId,
     selectedComponent,
+    copiedComponent,
   }
 }
 

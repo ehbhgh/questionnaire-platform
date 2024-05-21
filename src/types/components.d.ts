@@ -10,6 +10,7 @@ export interface ComponentInfoInterface {
 export type ComponentStateType = {
   componentList: Array<ComponentInfoInterface>
   selectledId?: string
+  copiedComponent?: ComponentInfoInterface | null
 }
 
 export type StateType = {}

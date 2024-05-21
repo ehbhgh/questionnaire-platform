@@ -6,6 +6,7 @@ import { changeSelectId } from '@/store/features/componentsReducer'
 import { ComponentInfoInterface, ComponentStateType } from '@/types/components'
 import { getComponentConfByType } from '@/components/QuestionComponents'
 import useGetComponentInfo from '@/hooks/useGetComponentInfo'
+import useBindCanvasKeyPress from '@/hooks/useBindCanvasKeyPress'
 import classNames from 'classnames'
 type ProprType = {
   loading: boolean
@@ -24,6 +25,8 @@ const EditCanvas: FC<ProprType> = ({ loading }) => {
     dispatch(changeSelectId(id))
     e.stopPropagation()
   }
+  //绑定快捷键
+  useBindCanvasKeyPress()
   if (loading) {
     return (
       <div style={{ marginTop: '60px', textAlign: 'center' }}>

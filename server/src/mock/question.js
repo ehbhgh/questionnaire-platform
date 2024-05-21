@@ -16,37 +16,125 @@ module.exports = [
           componentList: [
             {
               uuid: Mock.Random.id(),
+              type: 'QuestionInfo',
+              title: '问卷信息',
+              isHidden: false,
+              isLocked: false,
+              props: {
+                title: '调查青少年教育问题',
+                desc: '关于青少年教育的实时调研',
+              },
+            },
+            {
+              uuid: Mock.Random.id(),
               type: 'QuestionTitle',
               title: '标题',
-              isHidden:false,
-              isLocked:false,
-              props:{
+              isHidden: false,
+              isLocked: false,
+              props: {
                 text: '个人信息调研',
                 level: 1,
                 isCenter: false,
-              }
+              },
             },
             {
               uuid: Mock.Random.id(),
               type: 'QuestionInput',
               title: '输入框1',
-              isHidden:false,
-              isLocked:false,
-              props:{
-                title: '你的姓名',
+              isHidden: false,
+              isLocked: false,
+              props: {
+                title: '姓名',
                 placeholder: '请输入姓名',
-              }
+              },
             },
             {
               uuid: Mock.Random.id(),
               type: 'QuestionInput',
               title: '输入框2',
-              isHidden:false,
-              isLocked:false,
-              props:{
-                title: '你的手机号',
+              isHidden: false,
+              isLocked: false,
+              props: {
+                title: '手机号',
                 placeholder: '请输入手机号',
-              }
+              },
+            },
+            {
+              uuid: Mock.Random.id(),
+              type: 'QuestionRadio',
+              title: '单选111',
+              isHidden: false,
+              isLocked: false,
+              props: {
+                title: '性别',
+                isVertical: false,
+                options: [
+                  {
+                    text: '男',
+                    value: '1',
+                  },
+                  {
+                    text: '女',
+                    value: '2',
+                  },
+                ],
+                value: '1',
+              },
+            },
+            {
+              uuid: Mock.Random.id(),
+              type: 'QuestionCheckBox',
+              title: '多选1',
+              isHidden: false,
+              isLocked: false,
+              props: {
+                title: '兴趣爱好',
+                isVertical: false,
+                list: [
+                  {
+                    text: '篮球',
+                    value: '1',
+                    checked:false
+                  },
+                  {
+                    text: '游泳',
+                    value: '2',
+                    checked:false
+                  },
+                  {
+                    text: '足球',
+                    value: '3',
+                    checked:false
+                  },
+                  {
+                    text: '画画',
+                    value: '4',
+                    checked:false
+                  },
+                ]
+              },
+            },
+            {
+              uuid: Mock.Random.id(),
+              type: 'QuestionTextArea',
+              title: '文本1',
+              isHidden: false,
+              isLocked: false,
+              props: {
+                title: '建议',
+                placeholder: '请输入您的建议',
+              },
+            },
+            {
+              uuid: Mock.Random.id(),
+              type: 'QuestionParagrap',
+              title: '段落1',
+              isHidden: false,
+              isLocked: false,
+              props: {
+                text: '请确认输入完整信息，此信息仅为调查问卷使用，不会公开您的信息',
+                isCenter: true,
+              },
             },
           ],
         },
